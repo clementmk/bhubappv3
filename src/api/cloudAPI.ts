@@ -7,7 +7,7 @@ import { REACT_APP_API_BASE_URL } from '@env';
 // 3. If running on physical device: use your PC's local IP (e.g., 192.168.x.x)
 //
 // CHANGE THIS to your local PC IP address or backend URL:
-const API_BASE_URL = 'http://10.0.2.2:3001/api';
+const API_BASE_URL = REACT_APP_API_BASE_URL;
 // For physical device on WiFi, replace above with: 'http://YOUR_PC_IP:3001/api'
 // Example: 'http://192.168.1.6:3001/api'
 
@@ -222,4 +222,3 @@ export const syncAPI = {
 };
 
 export default api;
-
