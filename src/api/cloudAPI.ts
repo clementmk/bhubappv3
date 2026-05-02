@@ -57,17 +57,36 @@ api.interceptors.response.use(
 
 export const userAPI = {
   getLeaderboard: async (limit: number) => {
-    // This hits http://192.168.x.x:3001/api/users/leaderboard
-    const response = await api.get(`/users/leaderboard?limit=${limit}`);
-    return response.data;
+    try {
+      const response = await api.get(`/users/leaderboard?limit=${limit}`);
+      return response.data;
+    } catch (error: any) {
+      console.error('getLeaderboard error:', error?.response?.data || error.message);
+      throw error;
+    }
   },
+
   getProfile: async (username: string) => {
-    const response = await api.get(`/users/${username}`);
-    return response.data;
+    try {
+      const response = await api.get(`/users/${username}`);
+      return response.data;
+    } catch (error: any) {
+      console.error('getProfile error:', error?.response?.data || error.message);
+      throw error;
+    }
   },
+
   updateMembership: async (username: string, membershipType: string, membershipExpiry: string) => {
-    const response = await api.put(`/users/${username}/membership`, { membershipType, membershipExpiry });
-    return response.data;
+    try {
+      const response = await api.put(`/users/${username}/membership`, {
+        membershipType,
+        membershipExpiry,
+      });
+      return response.data;
+    } catch (error: any) {
+      console.error('updateMembership error:', error?.response?.data || error.message);
+      throw error;
+    }
   },
 };
 
@@ -76,24 +95,34 @@ export const userAPI = {
 // ──────────────────────────────────────────────────────────────────────────────
 
 export const routeAPI = {
-  // Get latest routes
   getLatestRoutes: async () => {
-    const response = await api.get('/routes/latest');
-    // Note: your controller returns {success, routes}, so we access .routes
-    return response.data.routes;
+    try {
+      const response = await api.get('/routes/latest');
+      return response.data.routes;
+    } catch (error: any) {
+      console.error('getLatestRoutes error:', error?.response?.data || error.message);
+      throw error;
+    }
   },
 
   submitRouteCompletion: async (completionData: any) => {
-    // Matches router.post('/completions', ...) in routeRoutes.js
-    const response = await api.post('/routes/completions', completionData);
-    return response.data;
+    try {
+      const response = await api.post('/routes/completions', completionData);
+      return response.data;
+    } catch (error: any) {
+      console.error('submitRouteCompletion error:', error?.response?.data || error.message);
+      throw error;
+    }
   },
 
   getUserSends: async (username: string) => {
-    // Matches router.get('/user/:username', ...) in routeRoutes.js
-    const response = await api.get(`/routes/user/${username}`);
-    // Since getUserSends returns 'rows' directly, response.data is the array
-    return response.data;
+    try {
+      const response = await api.get(`/routes/user/${username}`);
+      return response.data;
+    } catch (error: any) {
+      console.error('getUserSends error:', error?.response?.data || error.message);
+      throw error;
+    }
   },
 };
 
@@ -130,22 +159,34 @@ export const betaAPI = {
 // ──────────────────────────────────────────────────────────────────────────────
 
 export const communityAPI = {
-  // Get community posts
   getPosts: async (page: number = 1, limit: number = 20) => {
-    const response = await api.get(`/community/posts?page=${page}&limit=${limit}`);
-    return response.data;
+    try {
+      const response = await api.get(`/community/posts?page=${page}&limit=${limit}`);
+      return response.data;
+    } catch (error: any) {
+      console.error('getPosts error:', error?.response?.data || error.message);
+      throw error;
+    }
   },
 
-  // Create new post
   createPost: async (postData: any) => {
-    const response = await api.post('/community/posts', postData);
-    return response.data;
+    try {
+      const response = await api.post('/community/posts', postData);
+      return response.data;
+    } catch (error: any) {
+      console.error('createPost error:', error?.response?.data || error.message);
+      throw error;
+    }
   },
 
-  // Like/unlike post
   togglePostLike: async (postId: string, liked: boolean) => {
-    const response = await api.post(`/community/posts/${postId}/like`, { liked });
-    return response.data;
+    try {
+      const response = await api.post(`/community/posts/${postId}/like`, { liked });
+      return response.data;
+    } catch (error: any) {
+      console.error('togglePostLike error:', error?.response?.data || error.message);
+      throw error;
+    }
   },
 };
 
@@ -154,23 +195,31 @@ export const communityAPI = {
 // ──────────────────────────────────────────────────────────────────────────────
 
 export const newsAPI = {
-  // Get latest news
   getLatestNews: async () => {
-    const response = await api.get('/news/latest');
-    return response.data;
+    try {
+      const response = await api.get('/news/latest');
+      return response.data;
+    } catch (error: any) {
+      console.error('getLatestNews error:', error?.response?.data || error.message);
+      throw error;
+    }
   },
 };
-
 // ──────────────────────────────────────────────────────────────────────────────
 // SYNC UTILITIES
 // ──────────────────────────────────────────────────────────────────────────────
 
 export const syncAPI = {
-  // Sync local changes to cloud
   syncLocalChanges: async (changes: any) => {
-    const response = await api.post('/sync/changes', changes);
-    return response.data;
+    try {
+      const response = await api.post('/sync/changes', changes);
+      return response.data;
+    } catch (error: any) {
+      console.error('syncLocalChanges error:', error?.response?.data || error.message);
+      throw error;
+    }
   },
 };
 
 export default api;
+
