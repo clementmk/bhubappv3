@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "71016716487",
+    "project_id": "bhubapp2026",
+    "storage_bucket": "bhubapp2026.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:71016716487:android:06ae953ed822fd9bd2c6e2",
+        "android_client_info": {
+          "package_name": "com.bhubapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgEl45z42NNJVGePgCZBnLIHnB3Kej7g8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
