@@ -31,7 +31,14 @@
 
 This repository contains both the **React Native mobile app** and the **Node.js backend server**. You need to run both to experience the full cloud-synced application.
 
-### 1. Start the Backend Server
+### 1. Download the Dependencies
+
+Run this line of command inside the root folder of the project:
+```
+npm install
+```
+
+### 2. Start the Backend Server
 
 The backend handles the cloud API, WebSockets, and media uploads.
 
@@ -43,13 +50,13 @@ node server.js
 ```
 *The server will start on port `3001` and create a local `bhub.db` file for cloud data.*
 
-### 2. Configure Your Network
+### 3. Configure Your Network
 
 If you are running the app on a physical device, you need to point the app to your computer's local IP address. 
 * Open `src/api/cloudAPI.ts` and `src/api/websocket.ts`.
 * Change `API_BASE_URL` and `WS_URL` from `10.0.2.2` (the Android Emulator gateway) to your computer's IPv4 address (e.g., `192.168.1.100`).
 
-### 3. Start the Mobile App
+### 4. Start the Mobile App
 
 Run the React Native Metro bundler and compile the Android app.
 
